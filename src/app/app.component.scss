@@ -1,0 +1,236 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 32px;
+    padding-right: 32px;
+
+    h1, h2 {
+        text-align: center;
+    }
+
+    .names {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+
+        img {
+            height: 550px;
+
+
+            @media (max-width: 768px) {
+                height: 400px;
+            }
+        }
+    }
+
+    .hello {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+        background-color: black;
+        color: #FFFBF7;
+
+        h1 {
+            font-size: 60px;
+            margin-top: 0;
+            font-weight: bold;
+            font-weight: 100;
+
+            &.name-list {
+                margin-left: 40px;
+                margin-right: 40px;
+            }
+        }
+
+        h2 {
+            margin-top: 0;
+            font-weight: 100;
+
+            &.join-us {
+                margin-left: 40px;
+                margin-right: 40px;
+            }
+        }
+
+        h3 {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: 100;
+        }
+        
+        .link {
+            padding-left: 6px;
+            padding-right: 6px;
+            color: #FFFBF7;
+            font-size: 1.17em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            font-weight: 100;
+        }
+
+        .second-part {
+            margin-top: 30px;
+        }
+    }
+
+    .photo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+        background-size: cover;
+        background-position: 60% 50%;
+        background-repeat: no-repeat;
+
+        @media (max-width: 768px) {
+            background-position: 75% 50%;
+        }
+    }
+
+    .photo-1 {
+        background-image: url(../assets/images/20220923_Lea_Laurent_81.jpg);
+    }
+
+    .photo-2 {
+        background-image: url(../assets/images/20220923_Lea_Laurent_71.jpg);
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+    }
+
+    .respond {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 30vh;
+        width: 100vw;
+        background-color: black;
+        color: #FFFBF7;
+
+        h2 {
+            font-size: 50px;
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: 40px;
+            margin-right: 40px;
+            font-weight: 100;
+        }
+
+        h3 {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: 100;
+        }
+    }
+
+    .form-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        background-color: #FFFBF7;
+        padding-top: 100px;
+        padding-bottom: 100px;
+
+        h2 {
+            font-size: 40px;
+            margin-top: 0;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+            text-align: left;
+            border-bottom: 1px solid black;
+            font-weight: 100;
+
+            &.name {
+                margin-top: 50px
+            }
+        }
+
+        .space-between {
+            justify-content: space-between;
+        }
+
+        .joining-group, .restriction-input {
+            width: 400px;
+
+            @media (max-width: 768px) {
+                width: 300px;
+            }
+        }
+
+        select, input {
+            width: -webkit-fill-available;
+            font-family: 'Playfair', Fallback, sans-serif !important;
+            height: 44px;
+            border-bottom: solid 1px black;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            background-color: transparent;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .divider {
+            width: 400px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            height: 3px;
+            background-color: black;
+
+            @media (max-width: 768px) {
+                width: 300px;
+            }
+        }
+
+        .submit-button {
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 20px;
+            width: 250px;
+            font-family: 'Playfair', Fallback, sans-serif !important;
+            background-color: transparent;
+            border: solid 1px black;
+            height: 44px;
+            outline: none;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+        }
+    }
+
+    .completed-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 25vh;
+        width: 100vw;
+        background-color: #FFFBF7;
+
+        h3 {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: 100;
+        }
+    }
+
+    .row {
+        display: flex;
+    }
+
+    .margin-16 {
+        margin-top: 16px;
+    }
+}

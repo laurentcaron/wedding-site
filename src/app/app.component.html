@@ -1,0 +1,124 @@
+
+<!-- Toolbar -->
+<!-- <div class="toolbar" role="banner">
+
+</div> -->
+
+<div class="content" role="main">
+  <div class="container">
+    <div class="names">
+      <img src="/assets/images/logo.jpg">
+    </div>
+
+    <div class="hello">
+      <h1 class="name-list">
+        {{lang === 'fr' ? 'Bonjour' : 'Hi'}}
+        <ng-container *ngFor="let guest of guestList; let i = index" class="row">
+          {{ guest.first }}<ng-container *ngIf="i + 1 < guestList.length - 1">,</ng-container> 
+          <ng-container *ngIf="i + 1 === guestList.length - 1"> &</ng-container>
+        </ng-container>
+      </h1>
+
+      <h2 class="join-us">
+        {{
+          lang === 'fr' ?
+          'Veuillez vous joindre à nous pour notre marriage le 19 août 2023' :
+          'Please join us as we walk down the aisle on August 19th, 2023'
+        }}
+      </h2>
+
+      <h3 class="first-title">
+        {{
+          lang === 'fr' ?
+          'La cérémonie débute à 15:00' :
+          'Ceremony starts at 3 PM'
+        }}
+      </h3>
+
+      <a href="https://goo.gl/maps/dwtnANP8K7yoJmeB8" target="_blank" class="link">
+        Chapelle Notre-Dame-du-Sacré-Coeur
+      </a>
+      <h3>
+        Montreal, QC, Canada
+      </h3>
+
+      <h3 class="second-part">
+        {{
+          lang === 'fr' ?
+          'La réception débute à 17:45' :
+          'Reception starts at 5:45 PM'
+        }}
+      </h3>
+      <a href="https://goo.gl/maps/pksb2dojYLVv8jGP9" target="_blank" class="link">
+        Hotel InterContinental
+      </a>
+      <h3>
+        Montreal, QC, Canada
+      </h3>
+    </div>
+
+    <div class="photo photo-1"></div>
+
+    <div class="respond">
+      <h2>
+        {{
+          lang === 'fr' ?
+          'Veuillez répondre' :
+          'Kindly respond'
+        }}
+      </h2>
+      <h3>
+        {{
+          lang === 'fr' ?
+          'avant le 25 Avril' :
+          'Please RSVP by April 25TH'
+        }}
+      </h3>
+    </div>
+  
+    <form [formGroup]="form" class="form-section" (submit)="submit()" *ngIf="!shouldHideForm">
+      <ng-container *ngFor="let guest of guestList">
+        <div formGroupName="joining" class="col space-between joining-group">
+          <h2 class="name">{{ guest.first + ' ' + guest.last}}</h2>
+          <select [formControlName]="guest.first">
+            <option value="">{{ lang === 'fr' ? 'Vas-tu te joindre à nous' : 'Will you be joining us?'}}</option>
+            <option *ngFor="let option of joiningOptions" [ngValue]="option.id">
+              {{ lang === 'fr' ? option.fr : option.en }}
+            </option>
+          </select>
+        </div>
+
+        <div formGroupName="diner" class="space-between margin-16 joining-group" *ngIf="shouldDisplayFoodSection(guest.first)">
+          <select [formControlName]="guest.first">
+            <option value="">{{ lang === 'fr' ? 'Sélectionnez votre repas' : 'Select your meal'}}</option>
+            <option *ngFor="let option of foodOptions" [ngValue]="option.id">
+              {{ lang === 'fr' ? option.fr : option.en }}
+            </option>
+          </select>
+        </div>
+
+        <div formGroupName="restrictions" class="margin-16 restriction-input"  *ngIf="shouldDisplayFoodSection(guest.first)">
+          <input type="text" [placeholder]="lang === 'fr' ? 'Restrictions alimentaires' : 'List any dietary restrictions'"
+            [formControlName]="guest.first">  
+        </div>
+      </ng-container>
+
+      <div class="divider"></div>
+
+      <button type="submit" class="submit-button">{{ lang === 'fr' ? 'Répondre' : 'RSVP'}}</button>
+      <span class="margin-16 error" *ngIf="errorMessage">{{errorMessage}}</span>
+
+    </form>
+
+    <div class="completed-form" *ngIf="shouldHideForm">
+      <h3>
+        {{ lang === "fr" ? 'Merci d\'avoir répondu au formulaire!' : 'Thank you for completing the form!'}}
+      </h3>
+    </div>
+
+    <div class="photo photo-2"></div>
+
+  </div>
+</div>
+
+<router-outlet></router-outlet>
