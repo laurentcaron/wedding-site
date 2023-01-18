@@ -35,7 +35,7 @@ export class AppComponent implements OnInit, OnDestroy {
       id: 'fish'
     },
     {
-      fr: 'Végé',
+      fr: 'Végétarien',
       en: 'Vegetarian',
       id: 'veg'
     }
