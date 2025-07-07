@@ -6,14 +6,14 @@
 
 <div class="content" role="main">
   <div class="container">
-    <div class="names">
-      <img src="/assets/images/logo.jpg">
+    <div class="section names">
+      <img [src]="lang === 'fr' ? '/assets/images/logo_fr.png' : '/assets/images/logo.jpg'">
     </div>
 
-    <div class="hello">
-      <h1 class="name-list">
+    <div class="section salute">
+      <h1>
         {{lang === 'fr' ? 'Bonjour' : 'Hi'}}
-        <ng-container *ngFor="let guest of guestList; let i = index" class="row">
+        <ng-container *ngFor="let guest of guestList; let i = index">
           {{ guest.first }}<ng-container *ngIf="i + 1 < guestList.length - 1">,</ng-container> 
           <ng-container *ngIf="i + 1 === guestList.length - 1"> &</ng-container>
         </ng-container>
@@ -22,64 +22,135 @@
       <h2 class="join-us">
         {{
           lang === 'fr' ?
-          'Veuillez vous joindre à nous pour notre marriage le 19 août 2023' :
+          'Joignez-vous à nous pour notre mariage le 19 août 2023' :
           'Please join us as we walk down the aisle on August 19th, 2023'
         }}
       </h2>
+    </div>
 
-      <h3 class="first-title">
+    <div class="section info">
+      <h3>
         {{
           lang === 'fr' ?
           'La cérémonie débute à 15:00' :
-          'Ceremony starts at 3 PM'
+          'Ceremony starts at 3:00 PM'
         }}
       </h3>
 
       <a href="https://goo.gl/maps/dwtnANP8K7yoJmeB8" target="_blank" class="link">
         Chapelle Notre-Dame-du-Sacré-Coeur
       </a>
+
       <h3>
-        Montreal, QC, Canada
+        426 Rue Saint-Sulpice, Montreal, QC, Canada
       </h3>
 
       <h3 class="second-part">
         {{
           lang === 'fr' ?
-          'La réception débute à 17:45' :
-          'Reception starts at 5:45 PM'
+          'La réception débute à 17:15' :
+          'Reception starts at 5:15 PM'
         }}
       </h3>
       <a href="https://goo.gl/maps/pksb2dojYLVv8jGP9" target="_blank" class="link">
         Hotel InterContinental
       </a>
       <h3>
-        Montreal, QC, Canada
+        360 Rue Saint-Antoine O, Montreal, QC, Canada
       </h3>
+
+      <button class="calendar-button" (click)="addToCalendar()">
+        {{ lang === 'fr' ? 'Ajouter au calendrier' : 'Add to calendar'}}
+      </button>
     </div>
 
-    <div class="photo photo-1"></div>
-
-    <div class="respond">
+    <div class="section info-sec">
       <h2>
         {{
           lang === 'fr' ?
-          'Veuillez répondre' :
-          'Kindly respond'
+          'Code vestimentaire' :
+          'Dress Code'
         }}
       </h2>
       <h3>
         {{
           lang === 'fr' ?
-          'avant le 25 Avril' :
-          'Please RSVP by April 25TH'
+          'Tenue de soirée' :
+          'Formal attire'
+        }}
+      </h3>
+
+      <div class="divider"></div>
+
+      <h2>
+        {{
+          lang === 'fr' ?
+          'Hébergement' :
+          'Accommodation'
+        }}
+      </h2>
+      <!-- 'If you wish to book a hotel room for the night of we have access to a discounted rate' -->
+      <h3>
+        {{
+          lang === 'fr' ?
+          'Si vous souhaitez réserver une chambre d\'hôtel, un tarif spécial réduit est disponible à l\'Hôtel InterContinental' :
+          'If you wish to book a hotel room for the night, a special reduced guest rate is available at Hotel InterContinental.'
+        }}
+      </h3>
+      <a
+        class="reserve-button"
+        target="_blank"
+        href="https://book.passkey.com/go/LeaLaurent"
+      >
+        {{ lang === 'fr' ? 'Réserver une chambre' : 'Book a room'}}
+      </a>
+
+      <div class="divider"></div>
+
+      <h2>
+        {{
+          lang === 'fr' ?
+          'Cadeaux' :
+          'Gifts'
+        }}
+      </h2>
+      <!-- 'Le cadeau le plus important pour nous est de vous avoir parmi nous pour notre journée spéciale. Si vous souhaitez nous faire l\'honneur d\'un cadeau, un puits à souhaits sera disponible le jour même.' : -->
+      <!-- 'The most important gift to us is to have you share our special day. Should you wish to honour us with a gift, a wishing well will be available on the day.' -->
+      <!-- 'Il n\'y a pas de plus grand cadeau que votre présence. Merci pour votre soutien et votre amour. Si vous souhaitez envoyer un cadeau de mariage, vous pouvez le faire au email leaandlaurent@gmail.com.' : -->
+      <!-- There\'s no greater gift than your presence. Thank you for your support and love over the time we\'ve known each other. -->
+      <!-- 'Your love and presence is the most precious. If you wish to send a wedding gift, it can be sent to leaandlaurent@gmail.com or a wishing well will be available on the day.' -->
+      <h3 class="big-margin">
+        {{
+          lang === 'fr' ?
+          'Votre amour et présence sont les plus précieux. Pour un cadeau de mariage, voici l\'adresse leaandlaurent@gmail.com ou un puit à souhaits sera disponible le jour même.' :
+          'Your love and presence are the most precious gifts to us. If you wish to help us celebrate with a contribution, you may send it either to leaandlaurent@gmail.com, or a wishing well will be available at the reception.'
+        }}
+      </h3>
+    </div>
+
+    <div class="section photo photo-1"></div>
+
+    <div class="section respond">
+      <h2>
+        {{
+          lang === 'fr' ?
+          'Veuillez répondre' :
+          'Kindly Respond'
+        }}
+      </h2>
+      <h3>
+        {{
+          lang === 'fr' ?
+          'avant le 7 juillet' :
+          'Please RSVP by July 7'
         }}
       </h3>
     </div>
   
-    <form [formGroup]="form" class="form-section" (submit)="submit()" *ngIf="!shouldHideForm">
-      <ng-container *ngFor="let guest of guestList">
-        <div formGroupName="joining" class="col space-between joining-group">
-          <h2 class="name">{{ guest.first + ' ' + guest.last}}</h2>
+    <form [formGroup]="form" class="section form-section" (submit)="submit()" *ngIf="!shouldHideForm && !shouldShowGotcha">
+      <ng-container *ngFor="let guest of guestList; let i = index">
+        <div formGroupName="joining" class="col space-between joining-group select-test">
+          <h2 [ngClass]="{'name': i > 0}">{{ guest.first + ' ' + guest.last}}</h2>
           <select [formControlName]="guest.first">
             <option value="">{{ lang === 'fr' ? 'Vas-tu te joindre à nous' : 'Will you be joining us?'}}</option>
             <option *ngFor="let option of joiningOptions" [ngValue]="option.id">
@@ -105,18 +176,24 @@
 
       <div class="divider"></div>
 
-      <button type="submit" class="submit-button">{{ lang === 'fr' ? 'Répondre' : 'RSVP'}}</button>
+      <button type="submit" class="submit-button" [disabled]="loading">
+        <ng-container *ngIf="!loading">{{ lang === 'fr' ? 'Répondre' : 'RSVP'}}</ng-container>
+        <ng-container *ngIf="loading"><img src="../assets/images/spinner.svg"></ng-container>
+      </button>
       <span class="margin-16 error" *ngIf="errorMessage">{{errorMessage}}</span>
 
     </form>
 
-    <div class="completed-form" *ngIf="shouldHideForm">
-      <h3>
+    <div class="section completed-form" *ngIf="shouldHideForm || shouldShowGotcha">
+      <h3 *ngIf="shouldHideForm">
         {{ lang === "fr" ? 'Merci d\'avoir répondu au formulaire!' : 'Thank you for completing the form!'}}
+      </h3>
+      <h3 *ngIf="shouldShowGotcha">
+        Gotcha!
       </h3>
     </div>
 
-    <div class="photo photo-2"></div>
+    <div class="section photo photo-2"></div>
 
   </div>
 </div>
